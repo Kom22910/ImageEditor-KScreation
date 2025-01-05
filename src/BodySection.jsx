@@ -9,7 +9,7 @@ import Output from './Output';
 const BodySection = () => {
 
     const [data, setData] = useState({
-        url: "asset/image.png",
+        url: "asset/img1.png",
         height: null,
         widht: null,
         grayscale: 0,
