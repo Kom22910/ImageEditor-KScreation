@@ -1,10 +1,22 @@
 
 
-import React, { StrictMode } from 'react'
+import React, { StrictMode, useState } from 'react'
 import Header from './Header';
 import BodySection from './BodySection';
 
 const Layout = () => {
+
+    const [num , setNum] = useState(0);
+
+    const changeNum = (id) =>{
+        setNum(id);
+        alert(id);
+    }
+
+
+
+
+
     return (
         <StrictMode>
 
@@ -13,11 +25,11 @@ const Layout = () => {
                 <div className="row">
 
                         {/* Header */}
-                        <Header />
+                        <Header fun={changeNum} />
 
 
                         {/* Body section */}
-                        <BodySection/>
+                        <BodySection  num = {num}/>
 
 
 
