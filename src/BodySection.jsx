@@ -39,7 +39,8 @@ const BodySection = ({num}) => {
     // img positioning 
 
     const [positionData , setPosition]= useState({
-        topBottom : null
+        topBottom : 0,
+        leftRight : 0
     })
 
     const ChangePosition = (e) =>{

@@ -7,7 +7,7 @@ import React, { StrictMode } from 'react';
 const Output = ({ data , PositionData}) => {
 
     const { url, height, widht, grayscale, blur, bright, constrast, hue, invert, opacity, saturate, radius } = data;
-
+    const { topBottom , leftRight } = PositionData;
 
     // const ref = useRef(null);
     // let count = 0;
@@ -48,7 +48,11 @@ const Output = ({ data , PositionData}) => {
                                 width: `${widht}px`,
                                 height: `${height}px`,
                                 filter: `brightness(${bright}) blur(${blur}px) contrast(${constrast}) grayscale(${grayscale}%) hue-rotate(${hue}deg) invert(${invert}%) opacity(${100 - opacity}%) saturate(${saturate})`,
-                                borderRadius: `${radius}% `
+                                borderRadius: `${radius}% `,
+                                position: 'relative',
+                                top : `${topBottom}vh`,
+                                left : `${leftRight}vw`
+                                
                             }
                         } />
                     </div>
