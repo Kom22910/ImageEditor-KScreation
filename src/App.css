@@ -163,9 +163,6 @@
 
 
     .operationsection {
-      height: 34vh;
-      overflow-y: auto;
-      scrollbar-color: black black;
 
       .form-group {
         margin-bottom: 4% !important;
