@@ -9,7 +9,7 @@ const Operation = ({ data, ChangeData }) => {
         <StrictMode>
 
 
-            <div className="col-sm-4 col-6 operationsection dis ">
+            <div className="col-sm-4 col-6 operationsection dis">
                 <div className="row">
 
 

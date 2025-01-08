@@ -4,7 +4,7 @@
 import React, { StrictMode } from 'react';
 // import html2canvas from 'html2canvas';
 
-const Output = ({ data }) => {
+const Output = ({ data , PositionData}) => {
 
     const { url, height, widht, grayscale, blur, bright, constrast, hue, invert, opacity, saturate, radius } = data;
 

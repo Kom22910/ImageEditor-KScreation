@@ -1,8 +1,103 @@
 
 
-import React, { StrictMode } from 'react'
+import React, { StrictMode, useState } from 'react'
 
-const EventMobileOperation1 = ({data , ChangeData}) => {
+const EventMobileOperation1 = ({ data, ChangeData }) => {
+
+
+    
+  
+    
+    
+    const CardData = [
+        {
+            id: 1,
+            title: "Gray Scale",
+            name: "grayscale",
+            min: "0",
+            max: "100",
+            step: null,
+            info: { a: data.grayscale }
+        },
+        {
+            id: 2,
+            title: "Blur",
+            name: "blur",
+            min: "0",
+            max: "15",
+            step: "0.1",
+            info: { a: data.blur }
+        },
+        {
+            id: 3,
+            title: "Brightness",
+            name: "bright",
+            min: "0",
+            max: "2",
+            step: "0.01",
+            info: { a: data.bright }
+        },
+        {
+            id: 4,
+            title: "Constrast",
+            name: "constrast",
+            min: "0",
+            max: "3",
+            step: "0.01",
+            info: { a: data.constrast }
+        },
+        {
+            id: 5,
+            title: "Hue",
+            name: "hue",
+            min: "0",
+            max: "360",
+            step: null,
+            info: { a: data.hue }
+        },
+        {
+            id: 6,
+            title: "Invert",
+            name: "invert",
+            min: "0",
+            max: "100",
+            step: null,
+            info: { a: data.invert }
+        },
+        {
+            id: 7,
+            title: "Opacity",
+            name: "opacity",
+            min: "0",
+            max: "100",
+            step: null,
+            info: { a: data.opacity }
+        },
+        {
+            id: 8,
+            title: "Saturation",
+            name: "saturate",
+            min: "0",
+            max: "10",
+            step: '0.1',
+            info: { a: data.saturate }
+        },
+        {
+            id: 9,
+            title: "Image Radius ",
+            name: "radius",
+            min: "0",
+            max: "50",
+            step: '1',
+            info: { a: data.radius }
+        }
+    ]
+
+
+    const [disable , setDisable] = useState(null);
+    const ActiveIt = (id) => {
+        setDisable(disable === id ? null : id)
+    }
 
 
 
@@ -14,7 +109,7 @@ const EventMobileOperation1 = ({data , ChangeData}) => {
                 <div className="row">
 
 
-                    <div className="col-12 px-4 m-auto">
+                    <div className="col-10 m-auto p-0">
                         <div className="row">
 
                             {/* first part - url */}
@@ -26,7 +121,7 @@ const EventMobileOperation1 = ({data , ChangeData}) => {
                                     </div>
 
                                     <div className="col-8">
-                                        <input type="text" placeholder='URL' value={data.url} name='url' onClick={(e) => ChangeData(e)} />
+                                        <input type="text" value={data.url} name='url' onChange={(e) => ChangeData(e)} />
                                     </div>
 
                                 </div>
@@ -35,7 +130,7 @@ const EventMobileOperation1 = ({data , ChangeData}) => {
 
 
                             {/* third part - widht */}
-                            <div className="col-12 form-group mb-2">
+                            <div className="col-12 form-group mb-2" >
                                 <div className="row">
 
                                     <div className="col-4  m-auto">
@@ -43,7 +138,7 @@ const EventMobileOperation1 = ({data , ChangeData}) => {
                                     </div>
 
                                     <div className="col-8">
-                                        <input type="number" placeholder='eg : 100' value={data.widht} name='widht' onClick={(e) => ChangeData(e)} />
+                                        <input type="number" placeholder='eg : 100' value={data.widht} name='widht' onChange={(e) => ChangeData(e)} />
                                     </div>
 
                                 </div>
@@ -59,143 +154,44 @@ const EventMobileOperation1 = ({data , ChangeData}) => {
                                     </div>
 
                                     <div className="col-8">
-                                        <input type="number" placeholder='eg : 100' value={data.height} name='height' onClick={(e) => ChangeData(e)} />
+                                        <input type="number" placeholder='eg : 100' value={data.height} name='height' onChange={(e) => ChangeData(e)} />
                                     </div>
 
                                 </div>
                             </div>
 
-                            {/* 4 part - Gray scale */}
-                            <div className="col-12 form-group mb-2">
-                                <div className="row">
 
-                                    <div className="col-4  m-auto">
-                                        <label>Gray scale : </label>
-                                    </div>
 
-                                    <div className="col-8">
-                                        <input type="range" min="0" max="100" value={data.grayscale} name='grayscale' onClick={(e) => ChangeData(e)} />
-                                    </div>
+                            {
+                                CardData.map((val) => {
 
-                                </div>
-                            </div>
+                                    return (
+                                        <div className="col-12 form-group mb-2 " onClick={() => ActiveIt(val.id)} key={val.id}>
+                                            <div className="row">
 
-                            {/* 5 part - blur */}
-                            <div className="col-12 form-group mb-2">
-                                <div className="row">
+                                                <div className="col-4  m-auto">
+                                                    <label  className={disable === val.id ? 'text-danger fw-bold' : 'text-primary'}>{val.title} : </label>
+                                                </div>
 
-                                    <div className="col-4  m-auto">
-                                        <label>Blur : </label>
-                                    </div>
+                                                <div className="col-8 inputContainer">
+                                                    <input type="range"
+                                                        min={val.min}
+                                                        max={val.max}
+                                                        step={val.step}
+                                                        disabled={ disable === val.id ? false : true}
+                                                        value={val.info.a}
+                                                        name={val.name}
+                                                        onChange={(e) => ChangeData(e)}
+                                                    />
 
-                                    <div className="col-8">
-                                        <input type="range" min="0" max="15" step="0.1" value={data.blur} name='blur' onClick={(e) => ChangeData(e)} />
-                                    </div>
 
-                                </div>
-                            </div>
+                                                </div>
 
-                            {/* 6 part - Brightness */}
-                            <div className="col-12 form-group mb-2">
-                                <div className="row">
-
-                                    <div className="col-4  m-auto">
-                                        <label>Brightness : </label>
-                                    </div>
-
-                                    <div className="col-8">
-                                        <input type="range" min="0" max="2" step="0.01" value={data.bright} name='bright' onClick={(e) => ChangeData(e)} />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            {/* 7 part - Contrast */}
-                            <div className="col-12 form-group mb-2">
-                                <div className="row">
-
-                                    <div className="col-4  m-auto">
-                                        <label>Constrast : </label>
-                                    </div>
-
-                                    <div className="col-8">
-                                        <input type="range" min="0" max="3" step="0.01" value={data.constrast} name='constrast' onClick={(e) => ChangeData(e)} />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            {/* 8 part - Hue Rotation */}
-                            <div className="col-12 form-group mb-2">
-                                <div className="row">
-
-                                    <div className="col-4  m-auto">
-                                        <label>Hue : </label>
-                                    </div>
-
-                                    <div className="col-8">
-                                        <input type="range" min="0" max="360" value={data.hue} name='hue' onClick={(e) => ChangeData(e)} />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            {/* 9 part - Invert */}
-                            <div className="col-12 form-group mb-2">
-                                <div className="row">
-
-                                    <div className="col-4  m-auto">
-                                        <label>Invert : </label>
-                                    </div>
-
-                                    <div className="col-8">
-                                        <input type="range" min="0" max="100" value={data.invert} name='invert' onClick={(e) => ChangeData(e)} />
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* 10 part - Opacity */}
-                            <div className="col-12 form-group mb-2">
-                                <div className="row">
-
-                                    <div className="col-4  m-auto">
-                                        <label>Opacity : </label>
-                                    </div>
-
-                                    <div className="col-8">
-                                        <input type="range" min="0" max="100" value={data.opacity} name='opacity' onClick={(e) => ChangeData(e)} />
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* 11 part - Saturation */}
-                            <div className="col-12 form-group mb-2">
-                                <div className="row">
-
-                                    <div className="col-4  m-auto">
-                                        <label>Saturation : </label>
-                                    </div>
-
-                                    <div className="col-8">
-                                        <input type="range" min="0" max="10" step="0.1" value={data.saturate} name='saturate' onClick={(e) => ChangeData(e)} />
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* 12 part - Border Radius */}
-                            <div className="col-12 form-group mb-2">
-                                <div className="row">
-
-                                    <div className="col-4  m-auto">
-                                        <label>Image Radius : </label>
-                                    </div>
-
-                                    <div className="col-8">
-                                        <input type="range" min="0" max="50" step="1" value={data.radius} name='radius' onClick={(e) => ChangeData(e)} />
-                                    </div>
-                                </div>
-                            </div>
-
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
 
                         </div>
                     </div>

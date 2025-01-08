@@ -12,6 +12,9 @@ import EventOperationPositioning from './EventOperation/EventOperationPositionin
 
 const BodySection = ({num}) => {
 
+
+    // img setting 
+
     const [data, setData] = useState({
         url: "asset/img1.png",
         height: null,
@@ -27,11 +30,21 @@ const BodySection = ({num}) => {
         radius: 0
     })
 
-
-
     const ChangeData = (e) => {
         const { name, value } = e.target;
         setData({ ...data, [name]: value });
+    }
+
+
+    // img positioning 
+
+    const [positionData , setPosition]= useState({
+        topBottom : null
+    })
+
+    const ChangePosition = (e) =>{
+        const { name, value } = e.target;
+        setPosition({...positionData , [name] : value})
     }
 
 
@@ -47,11 +60,14 @@ const BodySection = ({num}) => {
                     }
                     {
                         num === 1 &&
-                         <EventOperationPositioning/>
+                         <EventOperationPositioning   PositionData = {positionData} ChangePosition = {ChangePosition}/>
                     }
 
+
                     {/* output */}
-                    <Output data={data} />
+                    <Output data={data} PositionData={positionData} />
+
+
 
 
                     {/* operation */}
