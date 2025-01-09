@@ -105,11 +105,11 @@ const EventMobileOperation1 = ({ data, ChangeData }) => {
         <StrictMode>
 
 
-            <div className="col-sm-4 col-12 operationsection vis">
+            <div className="col-sm-4 col-11 operationsection vis m-auto">
                 <div className="row">
 
 
-                    <div className="col-10 m-auto p-0">
+                    <div className="col-11 m-auto p-0">
                         <div className="row">
 
                             {/* first part - url */}
@@ -169,11 +169,11 @@ const EventMobileOperation1 = ({ data, ChangeData }) => {
                                         <div className="col-12 form-group mb-2 " onClick={() => ActiveIt(val.id)} key={val.id}>
                                             <div className="row">
 
-                                                <div className="col-4  m-auto">
-                                                    <label  className={disable === val.id ? 'text-danger fw-bold' : 'text-primary'}>{val.title} : </label>
+                                                <div className="col-5  m-auto">
+                                                    <label  className={disable === val.id ? 'text-primary fw-bold' : 'text-black'}>{val.title} : </label>
                                                 </div>
 
-                                                <div className="col-8 inputContainer">
+                                                <div className="col-7 inputContainer">
                                                     <input type="range"
                                                         min={val.min}
                                                         max={val.max}

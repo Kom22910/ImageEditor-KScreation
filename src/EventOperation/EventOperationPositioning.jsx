@@ -2,9 +2,7 @@
 
 
 import React, { StrictMode } from 'react'
-
 const EventOperationPositioning = ({PositionData , ChangePosition}) => {
-
 
 
   return (
@@ -12,7 +10,7 @@ const EventOperationPositioning = ({PositionData , ChangePosition}) => {
       <div className="col-sm-4 col-6 operationsection dis">
         <div className="row">
 
-          <div className="col-12 px-4 py-3 bg-info">
+          <div className="col-12 px-4 py-3">
             <div className="row">
 
               {/* First part */}

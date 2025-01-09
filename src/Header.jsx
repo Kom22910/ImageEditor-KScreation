@@ -8,7 +8,7 @@ const Header = ({fun}) => {
 
 
   const title = [
-    "Editing", "Positioning", "Dummy1", "Dummy2", "Dummy3"
+    "Editing", "Positioning", "Text", "Emoji", "Dummy3"
   ]
 
   const [activeIndex, setIndex] = useState(0)
